@@ -16,8 +16,7 @@ public class GetPostSteps {
 
     @Given("User perform Search for Post {string}")
     public void userPerformSearchForPost(String postNumber) {
-        when().get(String.format("http://localhost:3000/posts/%s", postNumber)).
-                then().body("author", is("typicode"));
+        BDDStyleMethode.simpleGetPost(postNumber);
         /**  OR
          * then().body("author", equalTo("typicode")); **/
     }
@@ -25,5 +24,16 @@ public class GetPostSteps {
     @Then("author should be shown as {string}")
     public void authorShouldBeShownAs(String name) {
         // then().body("author",("typicode"));
+        //BDDStyleMethode.simpleGetPost(name);
+    }
+
+    @Then("post search status code should be {string}")
+    public void postSearchStatusCodeShouldBe(String statusCode) {
+        BDDStyleMethode.GetStatusCode(statusCode);
+    }
+
+    @Then("User should see the author names")
+    public void userShouldSeeTheAuthorNames() {
+        BDDStyleMethode.PerformContainCollection();
     }
 }
