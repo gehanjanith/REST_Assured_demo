@@ -34,4 +34,27 @@ public class BDDStyleMethode {
                 .then()
                 .statusCode(Integer.parseInt(statusCode));
     }
+
+    public static void PerformPathParameter(String postNumber) {
+        given()
+                .contentType(ContentType.JSON).
+                with()
+                .pathParam("posts", postNumber).
+                when()
+                .get("http://localhost:3000/posts/(post)").
+                then()
+                .body("author", containsString("typicode"));
+    }
+
+    public static void PerformQuarryParameter(String postNumber) {
+        given()
+                .contentType(ContentType.JSON).
+                with()
+                .queryParam("id", postNumber).
+                when()
+                .get("http://localhost:3000/posts").
+                then()
+                .body("author", hasSize(3));
+
+    }
 }

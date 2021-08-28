@@ -5,8 +5,6 @@ import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.when;
-import static org.hamcrest.Matchers.*;
 
 public class GetPostSteps {
     @Given("User perform GET operation for {string}")
@@ -35,5 +33,15 @@ public class GetPostSteps {
     @Then("User should see the author names")
     public void userShouldSeeTheAuthorNames() {
         BDDStyleMethode.PerformContainCollection();
+    }
+
+    @Then("author should be verify Path parameter")
+    public void authorShouldBeVerifyPathParameter(String postNumber) {
+        BDDStyleMethode.PerformPathParameter(postNumber);
+    }
+
+    @Then("author should be verify Quarry parameter")
+    public void authorShouldBeVerifyQuarryParameter(String postNumber) {
+        BDDStyleMethode.PerformQuarryParameter(postNumber);
     }
 }
